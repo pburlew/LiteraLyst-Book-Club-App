@@ -1,33 +1,23 @@
-![https://travis-ci.com/ronerlih/express-sequelize-box](https://travis-ci.com/ronerlih/express-sequelize-box.svg?branch=main&status=passed) ![https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard](https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604)
-# 📦 Express Sequelize box
+# APPLICATION TITLE
 
-## To-Do: Readme!
+## USER STORY
 
-## Use
-- Fork or clone and copy what you need
+WHO: As a book lover and someone who's interpersonal relationships are important to me
 
-## env vars
-- for production set on heroku: https://dashboard.heroku.com/apps/<app-name>/settings -> reveal env vars
-- locally: creat a `.env` file with key and value pair in form/url encoding `SECRET_KEY=val`
-- connection code on models/index.js: !['assets/connection.png'](assets/connection.png)
+WHAT: I need a way to (1.) find, aggregate and manage list of books to read and discuss with my chosen book club group and (2.) interact with, view, and get recommendations from other book club groups. 
 
-## Folder structure
-!['assets/structure.png'](assets/structure.png)
+WHY: This app will help me and others 
+- Organize my book club members
+- Organize the books we are focused on
+- Maintain a list of books and ratings based on our group
+- Connect with other book club groups and view their read and rated books
 
-## CI
-- travis: travis.io
-- code coverage: codacy.com
-- monitor on: https://ronerlih.loggly.com/search?terms=tag:heroku&from=-20m&until=now&source_group=&newtab=1#terms=&from=2020-11-07T12:03:00.296Z&until=2020-11-07T13:03:00.296Z&source_group=
 
-## diagram expmles: 
-!["assets/PROJECT-02-diagrams-templates.png"](assets/PROJECT-02-diagrams-templates.png)
+## APIs to use: 
+- Google Books API - https://developers.google.com/books/docs/v1/using
+- Open Library API - https://openlibrary.org/dev/docs/restful_api
+- NYT API = https://developer.nytimes.com/docs/books-product/1/routes/lists/best-sellers/history.json/get; gets everything but pic
+    
+## WIRE FRAME
 
-## To-Do:
-- write tests (Jest / mocha+chai)
-   - send test reports to code covarage 
-
-- log (winston/ bunyan/ log4js/ morgan)
-   - dashborad monitor + notifications
-
-## Further
-- express best practices: https://expressjs.com/en/advanced/best-practice-performance.html
+<img src = "wireframe.png" width = 800>
