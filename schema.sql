@@ -29,9 +29,3 @@ CREATE TABLE reviews (
     title
     text
 );
-
-CREATE TABLE club_books (
-    club_id
-    book_id
-    book_status
-);
