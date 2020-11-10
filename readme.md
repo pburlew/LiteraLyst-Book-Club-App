@@ -12,6 +12,7 @@ WHY: This app will help me and others
 - Maintain a list of books and ratings based on our group
 - Connect with other book club groups and view their read and rated books
 
+## MVP: Display a list of curated books
 
 ## APIs to use: 
 - Google Books API - https://developers.google.com/books/docs/v1/using
@@ -20,4 +21,4 @@ WHY: This app will help me and others
     
 ## WIRE FRAME
 
-<img src = "wireframe.png" width = 800>
+<img src = "assets/wireframe.png" width = 800>
