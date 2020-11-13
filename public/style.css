@@ -1,0 +1,62 @@
+html{
+    height:100%;
+    margin:0;
+    background-color: aliceblue;
+}
+body{
+    height:100%;
+    margin:0;
+    background-color: aliceblue;
+    position: relative;
+    min-height: 100vh;
+
+}
+
+ main{
+     
+    padding-top:200px;
+    margin:0 auto;
+    /* this what makes footer stay at bottom always */
+    overflow: hidden;
+    
+    
+} 
+footer {
+
+    text-align: center;
+    background-color:lavender;
+    position: absolute;
+    bottom:0;
+    width:100%
+   
+
+}
+#navContainer{
+    margin:auto;
+    border-style:solid;
+    border-width:5px;
+}
+
+/* styling for contact page  */
+
+.contact{
+    color: grey;
+    margin-top:-100px;
+    padding:30px;
+    
+}
+
+#contactMessage{
+    height:300px;
+    width:600px;
+}
+
+
+/* styling for portfolio  */
+
+.card-img-top{
+
+    width: 80px;
+    height:80px;
+    overflow: hidden;
+}

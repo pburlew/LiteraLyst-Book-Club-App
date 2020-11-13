@@ -30,7 +30,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.use("/api", apiRoutes);
+//app.use("/api", apiRoutes);
 app.use(htmlRoutes);
 
 // error handling
@@ -39,7 +39,7 @@ app.use(errorHandler);
 // drops all tables on eevery restart
 db.sequelize.sync({ force: true }).then(async () => {
    // seed db
-   await seed(db.Book);
+   await seed(db.Test);
 
    app.listen(PORT, () => {
       console.log("🌎 => live on http://localhost:%s", PORT);
