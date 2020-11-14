@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable camelcase */
 $(document).ready(() => {
    $("#viewList").hide(400);
    $("#viewList").empty();
@@ -7,17 +9,17 @@ $(document).ready(() => {
    // creating a click event for "searchBook"
    $("button").on("click",()=> {
 
-        //Clean fields
-        $("textarea[name='synopsis']").val("");
-        $("#message").val("");
+      //Clean fields
+      $("textarea[name='synopsis']").val("");
+      $("#message").val("");
            
-        //  validates if the search text was filled 
-        if ($("input[type='text']").val() == "") {
-            alert("Please fill in the search field");
-        }
-        else {
-            searchBook();
-        }
+      //  validates if the search text was filled 
+      if ($("input[type='text']").val() == "") {
+         alert("Please fill in the search field");
+      }
+      else {
+         searchBook();
+      }
 
    });
 
@@ -31,10 +33,10 @@ $(document).ready(() => {
 
       // Check if search by title or author
       if(choose === "title") {
-          queryURL += "title=" + searchtext;
+         queryURL += "title=" + searchtext;
       }
       else { 
-          queryURL += "author=" + searchtext;
+         queryURL += "author=" + searchtext;
       }
 
       queryURL += "&api-key=EoAuYsESNQyKmYqZaVo0CKM7dSB6MRn5";
@@ -76,7 +78,7 @@ $(document).ready(() => {
             $("#viewList").append(divRowSubTitle);
 
             for(let i = 0; i < response.num_results; i++){
-                //Create a row in each loop
+               //Create a row in each loop
                const divRow = $("<div>");
                divRow.addClass("row");
 
@@ -139,7 +141,7 @@ $(document).ready(() => {
 
             $("#copyright").text(""); 
 
-            var message = "";
+            let message = "";
           
             message = $("<h4>").text("***Book not found. Please fill in all fields to add***");
             $("#message").append(message);
