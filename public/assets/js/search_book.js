@@ -1,3 +1,34 @@
+// const db = require("../../../models");
+
+const addBtn = $(".addBook");
+
+addBtn.on("click", (event) => {
+   console.log($("#title").textContent);
+   event.preventDefault();
+ 
+   // Make a newBook object
+   const newBook = {
+      title: $("#title").val().trim(),
+      author: $("#author").val().trim(),
+      genre: $("#genre").val().trim(),
+      pages: $("#pages").val().trim()
+   };
+ 
+   // Send an AJAX POST-request with jQuery
+   db.Book.create(newBook)
+   // On success, run the following code
+      .then(() => {
+         res.redirect("/books");
+      });
+ 
+   // Empty each input box by replacing the value with an empty string
+   $("#title").val("");
+   $("#author").val("");
+   $("#genre").val("");
+   $("#pages").val("");
+ 
+});
+
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 $(document).ready(() => {
@@ -5,9 +36,10 @@ $(document).ready(() => {
    $("#viewList").empty();
    $("#showbook").hide(400);
    $("#message" ).text("");
+   
   
    // creating a click event for "searchBook"
-   $("button").on("click",()=> {
+   $(".search").on("click",()=> {
 
       //Clean fields
       $("textarea[name='synopsis']").val("");
@@ -117,8 +149,9 @@ $(document).ready(() => {
                // Adding a class of each Add Book
                button.addClass("btn btn-gray mb-2");
                // Adding a data-attribute
+               button.attr("data-name", response.results[i].book_title),
                button.attr("data-author", response.results[i].book_author);
-               // Providing the initial button text
+               button.attr("data-synopsis",response.results[i].summary);
                button.text("Add Book");
                // Adding the button to the divCol3
                $(divCol_3).append(button);
@@ -154,3 +187,23 @@ $(document).ready(() => {
 
    }
 });
+
+$(document).on("click", ".btn", createNewBook);
+
+function createNewBook() {
+   const newBook = {
+      title: $(this).attr("data-name"),
+      author: $(this).attr("data-author"),
+      synopsis: $(this).attr("data-synopsis"),
+      status: "toberead"
+   };
+   console.log(newBook);
+
+   db.Book.create(newBook)
+   // On success, run the following code
+      .then(() => {
+         res.redirect("/books");
+      });
+}
+
+
