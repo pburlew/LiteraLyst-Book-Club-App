@@ -1,33 +1,4 @@
-// const db = require("../../../models");
 
-const addBtn = $(".addBook");
-
-addBtn.on("click", (event) => {
-   console.log($("#title").textContent);
-   event.preventDefault();
- 
-   // Make a newBook object
-   const newBook = {
-      title: $("#title").val().trim(),
-      author: $("#author").val().trim(),
-      genre: $("#genre").val().trim(),
-      pages: $("#pages").val().trim()
-   };
- 
-   // Send an AJAX POST-request with jQuery
-   db.Book.create(newBook)
-   // On success, run the following code
-      .then(() => {
-         res.redirect("/books");
-      });
- 
-   // Empty each input box by replacing the value with an empty string
-   $("#title").val("");
-   $("#author").val("");
-   $("#genre").val("");
-   $("#pages").val("");
- 
-});
 
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
@@ -198,12 +169,8 @@ function createNewBook() {
       status: "toberead"
    };
    console.log(newBook);
+   // $.post("/api/create/book", newBook);
 
-   db.Book.create(newBook)
-   // On success, run the following code
-      .then(() => {
-         res.redirect("/books");
-      });
 }
 
 
