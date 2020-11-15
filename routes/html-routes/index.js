@@ -1,13 +1,20 @@
-// const express = require("express");
-// const router = express.Router();
-// const commentsRoute = require("./comments");
+const express = require("express");
+const router = express.Router();
+const booksRoute = require("./books");
+const joinRoute = require("./join");
+const searchRoute = require("./search");
 
-// // get route -> index
-// router.get("/", (req, res) => {
-//    res.redirect("/comments");
-// });
+// get route -> index
+router.get("/", (req, res) => {
+   res.render("index");
+});
 
-// // comments page
-// router.use("/comments", commentsRoute);
 
-// module.exports = router;
+
+// comments page
+router.use("/books", booksRoute);
+router.use("/join", joinRoute);
+router.use("/search", searchRoute);
+
+
+module.exports = router;
