@@ -19,11 +19,6 @@ module.exports = function(sequelize, DataTypes) {
          allowNull: false,
          len: [1]
       }, 
-      cover: {
-         type: DataTypes.TEXT,
-         allowNull: false,
-         len: [1]
-      }, 
       status: {
          type: DataTypes.STRING,
          allowNull: false,
@@ -33,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       }
    }, {
       carset: "utf8",
+      freezeTableName: true
    });
    return Book;
 };
