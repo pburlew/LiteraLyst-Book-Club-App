@@ -49,20 +49,20 @@ $(document).ready(() => {
          method: "GET"
       }).then((response) => {
 
-         // if the result is 1 then show in the fields
-         if(response.num_results == 1) {
-            $("#showbook").show(400);
-            $("#viewList").empty();
-            $("#message").hide(400);
+         // // if the result is 1 then show in the fields
+         // if(response.num_results == 1) {
+         //    $("#showbook").show(400);
+         //    $("#viewList").empty();
+         //    $("#message").hide(400);
           
-            // assign data from NYT_API
-            $("input[name='title']").val(response.results[0].book_title); 
-            $("input[name='author']").val(response.results[0].book_author); 
-            $("textarea[name='synopsis']").val(response.results[0].summary);
-            $("#copyright").text("Source: " + response.copyright); 
-         }
-         // if the result is more than 1 then show in list and hide the fields
-         else if (response.num_results > 1) {
+         //    // assign data from NYT_API
+         //    $("input[name='title']").val(response.results[0].book_title); 
+         //    $("input[name='author']").val(response.results[0].book_author); 
+         //    $("textarea[name='synopsis']").val(response.results[0].summary);
+         //    $("#copyright").text("Source: " + response.copyright); 
+         // }
+         // // if the result is more than 1 then show in list and hide the fields
+         if (response.num_results >= 1) {
 
             $("#viewList").empty();
             $("#viewList").show(400);
@@ -118,7 +118,8 @@ $(document).ready(() => {
 
                const button = $("<button>");
                // Adding a class of each Add Book
-               button.addClass("btn btn-gray mb-2");
+               button.addClass("btn btn-gray mb-2 addBook");
+               // button.addId("addbook");
                // Adding a data-attribute
                button.attr("data-name", response.results[i].book_title),
                button.attr("data-author", response.results[i].book_author);
@@ -132,6 +133,7 @@ $(document).ready(() => {
 
                // Append divRow in viewlist div - html
                $("#viewList").append(divRow);
+
             }
             $("#copyright").text("Source: " + response.copyright); 
          }
@@ -159,18 +161,20 @@ $(document).ready(() => {
    }
 });
 
-$(document).on("click", ".btn", createNewBook);
-
-function createNewBook() {
+$(document).on("click", ".addBook", function () {
+   const title = $(this).attr("data-name");
+   const author = $(this).attr("data-author");
+   const synop = $(this).attr("data-synopsis");
    const newBook = {
-      title: $(this).attr("data-name"),
-      author: $(this).attr("data-author"),
-      synopsis: $(this).attr("data-synopsis"),
+      title: title,
+      author: author,
+      synopsis: synop,
       status: "toberead"
    };
    console.log(newBook);
-   // $.post("/api/create/book", newBook);
+   $.post("/api/create/book", newBook)
+      .then(() => {
+         window.location.replace("/books");
 
-}
-
-
+      });
+});

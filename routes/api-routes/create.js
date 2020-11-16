@@ -3,13 +3,16 @@ const router = express.Router();
 const db = require("../../models");
 
 // go to /api/comments
-router.post("/book", (req, res, next) => {
+router.post("/book", (req, res) => {
    console.log("im here");
-   db.Book.create(req.body).then(
-      res.render("books")
+   console.log(req.body);
+   db.Book.create(req.body
+   ).then(() => {
+      console.log(res);
+   }
    ).catch(err => {
       res.status(500);
-      next(err);
+      console.log(err);
    });
    
 });
