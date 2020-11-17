@@ -49,19 +49,19 @@ $(document).ready(() => {
          method: "GET"
       }).then((response) => {
 
-         // // if the result is 1 then show in the fields
-         // if(response.num_results == 1) {
-         //    $("#showbook").show(400);
-         //    $("#viewList").empty();
-         //    $("#message").hide(400);
+         // if the result is 1 then show in the fields
+         if(response.num_results == 1) {
+            $("#showbook").show(400);
+            $("#viewList").empty();
+            $("#message").hide(400);
           
-         //    // assign data from NYT_API
-         //    $("input[name='title']").val(response.results[0].book_title); 
-         //    $("input[name='author']").val(response.results[0].book_author); 
-         //    $("textarea[name='synopsis']").val(response.results[0].summary);
-         //    $("#copyright").text("Source: " + response.copyright); 
-         // }
-         // // if the result is more than 1 then show in list and hide the fields
+            // assign data from NYT_API
+            $("input[name='title']").val(response.results[0].book_title); 
+            $("input[name='author']").val(response.results[0].book_author); 
+            $("textarea[name='synopsis']").val(response.results[0].summary);
+            $("#copyright").text("Source: " + response.copyright); 
+         }
+         // if the result is more than 1 then show in list and hide the fields
          if (response.num_results >= 1) {
 
             $("#viewList").empty();
