@@ -28,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       }
    }, {
       carset: "utf8",
+      freezeTableName: true
    });
    return Book;
 };

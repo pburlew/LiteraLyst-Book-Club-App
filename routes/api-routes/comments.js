@@ -4,7 +4,7 @@ const db = require("../../models");
 
 // /api/commnets/create 
 // post comment route -> back to index
-router.post("/create", (req, res, next) => {
+router.post("/commentcreate", (req, res, next) => {
    db.Test.create(req.body)
       .then(newComment => {
          console.log("[node] new comment:", newComment.comment);

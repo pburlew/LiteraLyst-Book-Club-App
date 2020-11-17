@@ -1,4 +1,5 @@
 
+
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
 $(document).ready(() => {
@@ -48,20 +49,20 @@ $(document).ready(() => {
          method: "GET"
       }).then((response) => {
 
-         // if the result is 1 then show in the fields
-         if(response.num_results == 1) {
-            $("#showbook").show(400);
-            $("#viewList").empty();
-            $("#message").hide(400);
+         // // if the result is 1 then show in the fields
+         // if(response.num_results == 1) {
+         //    $("#showbook").show(400);
+         //    $("#viewList").empty();
+         //    $("#message").hide(400);
           
-            // assign data from NYT_API
-            $("input[name='title']").val(response.results[0].book_title); 
-            $("input[name='author']").val(response.results[0].book_author); 
-            $("textarea[name='synopsis']").val(response.results[0].summary);
-            $("#copyright").text("Source: " + response.copyright); 
-         }
-         // if the result is more than 1 then show in list and hide the fields
-         else if (response.num_results > 1) {
+         //    // assign data from NYT_API
+         //    $("input[name='title']").val(response.results[0].book_title); 
+         //    $("input[name='author']").val(response.results[0].book_author); 
+         //    $("textarea[name='synopsis']").val(response.results[0].summary);
+         //    $("#copyright").text("Source: " + response.copyright); 
+         // }
+         // // if the result is more than 1 then show in list and hide the fields
+         if (response.num_results >= 1) {
 
             $("#viewList").empty();
             $("#viewList").show(400);
@@ -177,7 +178,8 @@ $(document).ready(() => {
 
                const button = $("<button>");
                // Adding a class of each Add Book
-               button.addClass("btn btn-gray mb-2");
+               button.addClass("btn btn-gray mb-2 addBook");
+               // button.addId("addbook");
                // Adding a data-attribute
                button.attr("id", "addbookList")
                button.attr("data-name", response.results[i].book_title),
@@ -192,6 +194,7 @@ $(document).ready(() => {
 
                // Append divRow in viewlist div - html
                $("#viewList").append(divRow);
+
             }
             $("#copyright").text("Source: " + response.copyright); 
          }
@@ -220,7 +223,7 @@ $(document).ready(() => {
 });
 
 
-$("#addBook_1").on("click", createNewBook); 
+$("#addbookBtn").on("click", createNewBook); 
 
 $(document).on("click", ".btn", createNewBook);
 
