@@ -1,9 +1,9 @@
 <table class=" table table-dark table-striped text-center">
    <tbody>
-      {{#each comments}}
+      {{#each books}}
       <tr>
-         <td> {{this.dataValues.comment}}</td>
-         <td> {{this.dataValues.createdAt}}</td>
+         <td> {{this.dataValues.title}}</td>
+         <td> {{this.dataValues.author}}</td>
       </tr>
       {{/each}}
    </tbody>

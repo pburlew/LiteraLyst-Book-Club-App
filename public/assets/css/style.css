@@ -7,6 +7,21 @@ body {
 
 }
 
+header {
+  background: #73937e;
+  padding: 45px 0;
+  /* color: #fff; */
+}
+
+h1{
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  color: #585563;
+  margin: 0;
+  text-align: center;
+
+}
+
 #top-bar {
   margin: 28px 0px 28px 0px;
 }
