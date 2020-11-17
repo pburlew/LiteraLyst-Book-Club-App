@@ -33,14 +33,12 @@ h2{
 }
 
 a {
-  
-  display: inline-flex;
   background: #C08497;
   color: black;
-  padding: 15px 30px;
   text-align: center;
   text-decoration: none;
-  margin: 50px;
+  padding: 15px;
+  margin-left: 30%;
 }
 
 
@@ -122,9 +120,9 @@ button:hover{
   border-width: 3px;
 }
 
-.button-size {
-  padding-bottom: 20px;
-}
+/* .button-size {
+  padding-bottom:px;
+} */
 
 #text-enter-button {
   margin-top: 10px;
@@ -134,4 +132,18 @@ button:hover{
 /* 
 h1 {
   /* color: white; */
-} */
+/* } */
+
+.navigate {
+  padding: 25%;
+  background-color: pink;
+}
+
+.mainheader {
+  margin: auto;
+
+}
+
+.col-sm-4 {
+  
+}
