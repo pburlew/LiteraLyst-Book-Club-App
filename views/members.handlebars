@@ -9,14 +9,18 @@
         </div>
     </header>
     <!-- Title page-->
-    <div class="container-fluid">
-        <div>
+    <div class="container-fluid" id="mainpageinfo">
+        <div class="row">
+        <div class="col-sm-6">
             <h2>Our Current Members</h2>
         </div>
     </div>
 
+&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 {{>viewMembers}}
-
-<a href="/join"><button class="btn btn-gray mb-2">Add a new member!</button></a>
+ <div class="col-sm-6">
+            <a href="/join"><button class="btn btn-gray mb-2">Add a new member!</button></a>
+        </div>
+</div>
