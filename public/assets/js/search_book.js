@@ -181,8 +181,8 @@ $(document).ready(() => {
                button.addClass("btn btn-gray mb-2 addBook");
                // button.addId("addbook");
                // Adding a data-attribute
-               button.attr("id", "addbookList")
-               button.attr("data-name", response.results[i].book_title),
+               button.attr("id", "addbookList");
+               button.attr("data-name", response.results[i].book_title);
                button.attr("data-author", response.results[i].book_author);
                button.attr("data-synopsis",response.results[i].summary);
                button.text("Add Book");
@@ -252,5 +252,5 @@ function createNewBook() {
    $.post("/api/books", newBook)
       .then(() => {
          window.location.pathname = "/books";
-          });
+      });
 }
