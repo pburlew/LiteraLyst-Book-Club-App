@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../models");
 
+
+
 // go to /api/comments
 router.post("/book", (req, res) => {
    console.log("im here");

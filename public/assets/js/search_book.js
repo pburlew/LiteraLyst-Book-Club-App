@@ -246,8 +246,7 @@ function createNewBook() {
          "status": $("input[name=status]:checked").val()
       };
    }
-   console.log(newBook);
-
+  
    //Set data into Book Table 
    $.post("/api/books", newBook)
       .then(() => {
