@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../models");
 
+
 // routing (html) /commnets
 router.get("/", (req, res) => {
    // get books from db and send to template
+
    db.Member.findAll({})
       .then((members) => {
          res.render("members", {
@@ -16,5 +18,6 @@ router.get("/", (req, res) => {
          next(err);
       });
 });
+
 
 module.exports = router;
