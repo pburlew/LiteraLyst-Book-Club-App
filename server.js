@@ -30,7 +30,8 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.use("/api", apiRoutes);
+require("./routes/api-routes/book-api-routes.js")(app);
+// app.use("/api", apiRoutes);
 app.use(htmlRoutes);
 
 // error handling

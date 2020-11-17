@@ -1,33 +1,3 @@
-// const db = require("../../../models");
-
-const addBtn = $(".addBook");
-
-addBtn.on("click", (event) => {
-   console.log($("#title").textContent);
-   event.preventDefault();
- 
-   // Make a newBook object
-   const newBook = {
-      title: $("#title").val().trim(),
-      author: $("#author").val().trim(),
-      genre: $("#genre").val().trim(),
-      pages: $("#pages").val().trim()
-   };
- 
-   // Send an AJAX POST-request with jQuery
-   db.Book.create(newBook)
-   // On success, run the following code
-      .then(() => {
-         res.redirect("/books");
-      });
- 
-   // Empty each input box by replacing the value with an empty string
-   $("#title").val("");
-   $("#author").val("");
-   $("#genre").val("");
-   $("#pages").val("");
- 
-});
 
 /* eslint-disable eqeqeq */
 /* eslint-disable camelcase */
@@ -39,7 +9,7 @@ $(document).ready(() => {
    
   
    // creating a click event for "searchBook"
-   $(".search").on("click",()=> {
+   $("#searchBtn").on("click",()=> {
 
       //Clean fields
       $("textarea[name='synopsis']").val("");
@@ -109,6 +79,39 @@ $(document).ready(() => {
             $(divRowSubTitle).append(Subtitle);
             $("#viewList").append(divRowSubTitle);
 
+            //Create titles in each columns 
+            const divRow_0 = $("<div>");
+            divRow_0.addClass("row");
+
+            const divCol_0 = $("<div>");
+            divCol_0.addClass("col-lg-2");
+            const title = $("<h4>").text("Title: ");
+            $(divCol_0).append(title);
+
+            const divCol_1 = $("<div>");
+            divCol_1.addClass("col-lg-2");
+            const author = $("<h4>").text("Author: ");
+            $(divCol_1).append(author);
+
+            const divCol_2 = $("<div>");
+            divCol_2.addClass("col-lg-3");
+            const synopsis = $("<h4>").text("Synopsis: ");
+            $(divCol_2).append(synopsis);
+
+            const divCol_3 = $("<div>");
+            divCol_3.addClass("col-lg-4");
+            const status = $("<h4>").text("Status: ");
+            $(divCol_3).append(status);
+
+            const divCol_4 = $("<div>");
+            divCol_4.addClass("col-md-1");
+            const action = $("<h4>").text("Action: ");
+            $(divCol_4).append(action);
+
+            $(divRow_0).append(divCol_0,divCol_1,divCol_2,divCol_3,divCol_4);
+            $("#viewList").append(divRow_0);
+
+            // Get datas of API ans show in list
             for(let i = 0; i < response.num_results; i++){
                //Create a row in each loop
                const divRow = $("<div>");
@@ -116,48 +119,76 @@ $(document).ready(() => {
 
                // create 4 columns in each loop
                const divCol_0 = $("<div>");
-               divCol_0.addClass("col-lg-3");
-
-               const title = $("<h6>").text("Title: ");
+               divCol_0.addClass("col-lg-2");
                const titleAPI = $("<span>").text(response.results[i].book_title); 
-               $(title).append(titleAPI);
-
-               $(divCol_0).append(title);
+               $(divCol_0).append(titleAPI);
 
                const divCol_1 = $("<div>");
                divCol_1.addClass("col-lg-2");
-
-               const author = $("<h6>").text("Author: ");
                const authorAPI = $("<span>").text(response.results[i].book_author);
-               $(author).append(authorAPI);
-
-               $(divCol_1).append(author);
+               $(divCol_1).append(authorAPI);
 
                const divCol_2 = $("<div>");
-               divCol_2.addClass("col-lg-5");
-
-               const synopsis = $("<h6>").text("Synopsis: ");
+               divCol_2.addClass("col-lg-3");
                const synopsisAPI = $("<span>").text(response.results[i].summary);
-               $(synopsis).append(synopsisAPI);
-
-               $(divCol_2).append(synopsis);
+               $(divCol_2).append(synopsisAPI);
 
                const divCol_3 = $("<div>");
-               divCol_3.addClass("col-lg-2");
+               divCol_3.addClass("col-lg-4");
+
+               $(divCol_3).append(
+                  $("<input>").prop({
+                     type: "radio",
+                     id: "status",
+                     name: "status",
+                     value: "Finished"
+                  })
+               ).append(
+                  $("<label>").prop({
+                     for: "Finished"
+                  }).html("&nbsp;Finished&nbsp;&nbsp;")
+               ).append(
+                  $("<input>").prop({
+                     type: "radio",
+                     id: "status",
+                     name: "status",
+                     value: "Reading"
+                  })
+               ).append(
+                  $("<label>").prop({
+                     for: "Reading"
+                  }).html("&nbsp;Reading&nbsp;&nbsp;")
+               ).append(
+                  $("<input>").prop({
+                     type: "radio",
+                     id: "status",
+                     name: "status",
+                     value: "To be read"
+                  })
+               ).append(
+                  $("<label>").prop({
+                     for: "To be read"
+                  }).html("&nbsp;To be read&nbsp;&nbsp;")
+               );
+              
+
+               const divCol_4 = $("<div>");
+               divCol_4.addClass("col-sm-1");
 
                const button = $("<button>");
                // Adding a class of each Add Book
                button.addClass("btn btn-gray mb-2");
                // Adding a data-attribute
+               button.attr("id", "addbookList")
                button.attr("data-name", response.results[i].book_title),
                button.attr("data-author", response.results[i].book_author);
                button.attr("data-synopsis",response.results[i].summary);
                button.text("Add Book");
-               // Adding the button to the divCol3
-               $(divCol_3).append(button);
+               // Adding the button to the divCol4
+               $(divCol_4).append(button);
 
                // Append all columns in divRow
-               $(divRow).append(divCol_0, divCol_1, divCol_2, divCol_3);
+               $(divRow).append(divCol_0, divCol_1, divCol_2, divCol_3, divCol_4);
 
                // Append divRow in viewlist div - html
                $("#viewList").append(divRow);
@@ -176,7 +207,7 @@ $(document).ready(() => {
 
             let message = "";
           
-            message = $("<h4>").text("***Book not found. Please fill in all fields to add***");
+            message = $("<h4>").text("***Book not found. Please fill in all fields to add a book***");
             $("#message").append(message);
    
          }
@@ -188,22 +219,35 @@ $(document).ready(() => {
    }
 });
 
+
+$("#addBook_1").on("click", createNewBook); 
+
 $(document).on("click", ".btn", createNewBook);
 
 function createNewBook() {
-   const newBook = {
-      title: $(this).attr("data-name"),
-      author: $(this).attr("data-author"),
-      synopsis: $(this).attr("data-synopsis"),
-      status: "toberead"
-   };
+
+   let newBook = [];
+   if($(this).get(0).id == "addbookBtn"){
+      newBook = {
+         "title": $("#title").val(),
+         "author": $("#author").val(),
+         "synopsis": $("#synopsis").val(),
+         "status": $("#status").val()  
+      };
+   }
+   else if($(this).get(0).id == "addbookList"){
+      newBook = {
+         "title": $(this).attr("data-name"),
+         "author": $(this).attr("data-author"),
+         "synopsis": $(this).attr("data-synopsis"),
+         "status": $("input[name=status]:checked").val()
+      };
+   }
    console.log(newBook);
 
-   db.Book.create(newBook)
-   // On success, run the following code
+   //Set data into Book Table 
+   $.post("/api/books", newBook)
       .then(() => {
-         res.redirect("/books");
-      });
+         window.location.pathname = "/books";
+          });
 }
-
-
