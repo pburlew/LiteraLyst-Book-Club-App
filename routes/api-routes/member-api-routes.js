@@ -1,6 +1,6 @@
 const db = require("../../models");
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+// const router = express.Router();
 
 
 //    app.get("/api/books", function(req, res) {
@@ -28,14 +28,18 @@ const router = express.Router();
 //     });
 //   });
 
+module.exports = function(app) {
 
-router.post("/", (req, res) => {
-   db.Member.create({name : req.body.name, 
-      email : req.body.email}).then((dbMember) => {
-      res.json(dbMember);
 
+   app.post("/api/members", (req, res) => {
+      db.Member.create({name : req.body.name, 
+         email : req.body.email}).then((dbMember) => {
+         res.json(dbMember);
+
+      });
    });
-});
+
+};
 
 //   app.delete("/api/authors/:id", function(req, res) {
 //     db.Author.destroy({
@@ -47,4 +51,4 @@ router.post("/", (req, res) => {
 //     });
 //   });
 
-module.exports = router;
+
