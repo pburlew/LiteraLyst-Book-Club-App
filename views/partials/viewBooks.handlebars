@@ -1,9 +1,15 @@
 <table class=" table table-dark table-striped text-center">
+   <tr>
+      <td>TITLE</td>
+      <td>AUTHOR</td>
+      <td>STATUS</td>
+   </tr>
    <tbody>
       {{#each books}}
       <tr>
          <td> {{this.dataValues.title}}</td>
          <td> {{this.dataValues.author}}</td>
+         <td> {{this.dataValues.status}}</td>
       </tr>
       {{/each}}
    </tbody>
