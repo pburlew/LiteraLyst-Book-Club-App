@@ -22,6 +22,7 @@ $(document).ready(() => {
 
 function addMember(){
    console.log("here");
+   // eslint-disable-next-line prefer-const
    let member = {
       name: $("#name").val(),
       email: $("#email").val()
