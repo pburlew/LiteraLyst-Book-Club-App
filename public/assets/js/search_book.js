@@ -49,19 +49,20 @@ $(document).ready(() => {
          method: "GET"
       }).then((response) => {
 
-         // if the result is 1 then show in the fields
-         if(response.num_results == 1) {
-            $("#showbook").show(400);
-            $("#viewList").empty();
-            $("#message").hide(400);
+         // // if the result is 1 then show in the fields
+         // if(response.num_results === 1) {
+         //    $("#showbook").show(400);
+         //    $("#viewList").empty();
+         //    $("#message").hide(400);
           
-            // assign data from NYT_API
-            $("input[name='title']").val(response.results[0].book_title); 
-            $("input[name='author']").val(response.results[0].book_author); 
-            $("textarea[name='synopsis']").val(response.results[0].summary);
-            $("#copyright").text("Source: " + response.copyright); 
-         }
-         // if the result is more than 1 then show in list and hide the fields
+         //    // assign data from NYT_API
+         //    $("input[name='title']").val(response.results[0].book_title); 
+         //    $("input[name='author']").val(response.results[0].book_author); 
+         //    $("textarea[name='synopsis']").val(response.results[0].summary);
+         //    $("#copyright").text("Source: " + response.copyright); 
+         // }
+         // // if the result is more than 1 then show in list and hide the fields
+         // else 
          if (response.num_results >= 1) {
 
             $("#viewList").empty();
@@ -95,12 +96,12 @@ $(document).ready(() => {
             $(divCol_1).append(author);
 
             const divCol_2 = $("<div>");
-            divCol_2.addClass("col-lg-3");
+            divCol_2.addClass("col-lg-5");
             const synopsis = $("<h4>").text("Synopsis: ");
             $(divCol_2).append(synopsis);
 
             const divCol_3 = $("<div>");
-            divCol_3.addClass("col-lg-4");
+            divCol_3.addClass("col-lg-2");
             const status = $("<h4>").text("Status: ");
             $(divCol_3).append(status);
 

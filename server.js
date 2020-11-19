@@ -1,4 +1,5 @@
 const express = require("express");
+// eslint-disable-next-line no-unused-vars
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
 const db = require("./models");
@@ -31,6 +32,8 @@ app.engine(
 app.set("view engine", "handlebars");
 
 require("./routes/api-routes/book-api-routes.js")(app);
+require("./routes/api-routes/member-api-routes.js")(app);
+
 // app.use("/api", apiRoutes);
 app.use(htmlRoutes);
 
